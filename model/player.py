@@ -5,3 +5,7 @@ class Player():
 		self.hunger = HUGER_START
 		self.spirit = SPIRIT_START 
 		self.point = POINT_START
+
+
+	def updateHunger(self,num):
+		pass
