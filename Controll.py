@@ -1,13 +1,16 @@
 import pygame as pg
 import time
 from const import *
-import model.model as model
+from model.model import GameModel
+
 #########################
 #	record game state
 #	
 class Controll():
 	def __init__(self):
 		#init view and model
+		self.model = GameModel()
+		# self.view = View()
 
 		# the things show in window
 		self.gameState = OPEN_PAGE
@@ -15,5 +18,10 @@ class Controll():
 		# correspond to left side buttons for next step
 		self.nextStage = []
 
-		# 
-		self.model = model
+		# map state
+		self.map = HIDE
+
+	def updateView(self, crt = {}):
+		# self.
+		pass	
+
