@@ -7,6 +7,8 @@ class GameModel():
 	def __init__(self):
 		self.player = Player()
 		self.pack = Pack()
-		self.site = 
+		self.site = startMap
+		pass
+	def initilize(self):
 		pass
 
