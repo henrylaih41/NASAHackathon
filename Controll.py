@@ -23,7 +23,7 @@ class Controll():
 		self.map = HIDE
 
 	def run(self):
-		self.view.initilize()
+		self.view.initView()
 		self.model.initilize()
 		# while len(self.gameState) != 0:
 			# crt = self.view.check()
