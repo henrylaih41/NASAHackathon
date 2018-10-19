@@ -1,6 +1,7 @@
 import pygame as pg
 import time
 from const import *
+from View.View import View
 from model.model import GameModel
 
 #########################
@@ -10,7 +11,7 @@ class Controll():
 	def __init__(self):
 		#init view and model
 		self.model = GameModel()
-		# self.view = View()
+		self.view = View()
 
 		# the things show in window
 		self.gameState = OPEN_PAGE

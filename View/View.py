@@ -1,6 +1,6 @@
 import pygame
 import os
-import const
+import View.const as const
 import time as t
 class ImageObject():
     def __init__(self,pos=None,pic=None):
