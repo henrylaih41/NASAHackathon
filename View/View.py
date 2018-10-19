@@ -1,6 +1,6 @@
 import pygame
 import os
-import const
+import View.const as const
 import time as t
 class TextObject():
     def __init__(self,rect,text,font = const.DEFAULT_FONT):
