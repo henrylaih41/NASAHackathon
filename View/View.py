@@ -16,19 +16,27 @@ class CharObject():
         self.temperature = -12
         self.pressure = 1000
 
-    def renderStatus(self):
-        hungerValue = TextObject(viewConst.CHAR_RENDER_POS[self.hunger]
-                                 ,self.hunger)
-        hungerValue = TextObject(viewConst.CHAR_RENDER_POS[self.hunger]
-                                 ,self.hunger)
-        hungerValue = TextObject(viewConst.CHAR_RENDER_POS[self.hunger]
-                                 ,self.hunger)
-        hungerValue = TextObject(viewConst.CHAR_RENDER_POS[self.hunger]
-                                 ,self.hunger)
-        hungerValue = TextObject(viewConst.CHAR_RENDER_POS[self.hunger]
-                                 ,self.hunger)
-        hungerValue = TextObject(viewConst.CHAR_RENDER_POS[self.hunger]
-                                 ,self.hunger)
+    def renderStatus(self,screen):
+        statusList = []
+        statusList.append(TextObject(viewConst.CHAR_RENDER_POS['hunger']
+                                 ,self.hunger))
+        statusList.append(TextObject(viewConst.CHAR_RENDER_POS['thirst']
+                                 ,self.thirst))
+        statusList.append(TextObject(viewConst.CHAR_RENDER_POS['points']
+                                 ,self.points))
+        statusList.append(TextObject(viewConst.CHAR_RENDER_POS['day']
+                                 ,self.day))
+        statusList.append(TextObject(viewConst.CHAR_RENDER_POS['pressure']
+                                 ,self.pressure))
+        statusList.append(TextObject(viewConst.CHAR_RENDER_POS['temperature']
+                                 ,self.temperature))
+        statusList.append(TextObject(viewConst.CHAR_RENDER_POS['spiritValue']
+                                 ,self.spiritValue))
+        for status in statusList:
+            status.blit(screen)
+        pygame.display.flip()
+        pygame.event.get()
+
 class AnimateObject():
     def __init__(self,image_list,time):
         self.imageList = image_list
@@ -77,12 +85,10 @@ class FadeObject():
             pygame.display.flip()
             events = pygame.event.get()
         
-
-
 class TextObject():
     def __init__(self,rect,text,font = viewConst.DEFAULT_FONT):
         self.rect = rect,
-        self.text = text,
+        self.text = str(text),
         self.font = pygame.font.SysFont(font, 24)
         self.color = viewConst.DEFAULT_COLOR
 
@@ -168,6 +174,7 @@ class View:
         self.gameScreen = pygame.display.set_mode(viewConst.WINDOW_SIZE)
         self.mapStat = mapConst.startMap
         self.pageStat = const.OPEN_PAGE
+        self.char = None
         self.clickLevel = 1
 
     ### Loads all used png from dir elementsPath,
@@ -245,6 +252,8 @@ class View:
             if(d.get('start')):
                 self.mapStat = mapConst.stationMap['ID']
                 self.updateObj(self.readJson('station.json'))
+                self.char = CharObject()
+                self.char.renderStatus(self.gameScreen)
 
         if(self.mapStat == mapConst.chooseMap):
             if (d.get('action') == "showDetail"):
