@@ -31,8 +31,8 @@ class Controll():
 			if crt["type"] == "item":
 				action = "showDetail"
 				name = crt["name"]
-				# self.model.mapEvent({"name":name,"action":action})
 				self.view.update({"name":name,"action":action})
+
 			elif crt["type"] == "move":
 				action = "move"
 				self.model.move({"name":crt["name"],"action":"move"})
@@ -48,15 +48,22 @@ class Controll():
 				name = crt["name"]
 				if crt["result"] == "yes":
 					self.model.update({"part":"pack","action":"take","target":crt["name"]})
+
 				elif crt["result"] == "no":
-					continue
+					pass
+
 				else:
 					print("WTF is Henry doing?")
 					
 				self.view.update({"name":name,"action":action, "counter":len(self.model.pack.items)})
 
 			elif crt["type"] == "action":
-				pass
+				if "name" not in crt:
+					print("WTF is Henry doing?")
+
+				else:
+					self.model.update({"part":"action","action":crt["name"]})
+
 			else:
 				print("WTF is Henry doing?")
 			# crt ~
