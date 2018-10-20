@@ -28,7 +28,7 @@ class GameModel():
 				if self.pack.full():
 					return {"action":"endChoose"}
 				else:
-					return {"action":null}
+					return {"action":None}
 		else:
 			print("HIHIHIHI")
 

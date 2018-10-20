@@ -124,6 +124,9 @@ class ImageObject():
 
     def detectCollision(self,x,y,level):
         ### if clickable, check if clicked else return false
+        print(self.clickable, level)
+        print(self.name)
+        print(self.rect)
         if self.clickable >= level:
             return self.rect.collidepoint(x,y)
         else:
@@ -156,7 +159,7 @@ class View:
         for path in [viewConst.ITEM_FULL_SCREEN,viewConst.ITEM_PNG_PATH,
                      viewConst.SHOWDETAIL_PNG_PATH,viewConst.ANIMATION_PATH,
                      viewConst.MOVE_PNG_PATH,viewConst.ACTION_PNG_PATH,
-                     viewConst.WINDOW_CONTROLL_PNG_PATH]:
+                     viewConst.WINDOW_CONTROLL_PNG_PATH,viewConst.CHOOSE_PNG_PATH]:
             elementsPath = os.listdir(path)
             elementsName = map(lambda x:x.replace(".png",""),elementsPath)
             for name in elementsName:
@@ -267,6 +270,7 @@ class View:
                         self.show()
                         effFlag = False
                 """
+                
 
     def clickInfo(self,clickedObj):
         if clickedObj.type == 'item':
@@ -281,7 +285,8 @@ class View:
                     "map" : self.mapStat,
                     "page" : self.pageStat,
                     "name" : clickedObj.name,
-                    "type" : clickedObj.type
+                    "type" : clickedObj.type,
+                    "result" : "yes" if clickedObj.name == "pick" else "no"
             }
                     
 
