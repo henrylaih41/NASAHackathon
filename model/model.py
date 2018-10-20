@@ -8,7 +8,17 @@ class GameModel():
 		self.player = Player()
 		self.pack = Pack()
 		self.site = startMap
-		pass
+
+		self.randomEven = None
+		self.temperature = None
+		self.height = None
+		self.longitude = 0
+		self.latitude = 0
+
 	def initilize(self):
+		pass
+
+	def mapEvent(self,inputer):
+		# self.site["i"]
 		pass
 

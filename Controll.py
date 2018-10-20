@@ -25,8 +25,28 @@ class Controll():
 	def run(self):
 		self.view.initView()
 		self.model.initilize()
-		# while len(self.gameState) != 0:
-			# crt = self.view.check()
+		while len(self.gameState) != 0:
+			crt = self.view.uerInput()
+			# key: "map" ,"page", "type"("item","move","windowControll","showDetail","choose","action"),"name"
+			if crt["type"] == "item":
+				action = "showDetail"
+				name = crt["name"]
+				self.model.mapEvent({"name":name,"action":action})
+				self.view.update({"name":name,"action":action})
+			elif crt["type"] == "move":
+				action = "move"
+				self.model.move({"name":crt["name"],"action":"move"})
+				# target = 
+			elif crt["type"] == "windowControll":
+				self.view.update({"name":crt["name"],"action":"windowControll"})
+			elif crt["type"] == "showDetail":
+				self.view.update({"name":crt["name"],"action":"showDetail"})
+			elif crt["type"] == "choose":
+				pass
+			elif crt["type"] == "action":
+				pass
+			else:
+				print("WTF is Henry doing?")
 			# crt ~
 			# viewT = self.model.update(crt)
 			# self.view.update(viewT)
@@ -37,5 +57,8 @@ class Controll():
 	def updateView(self, crt = {}):
 		# self.
 		pass	
+
+
+
 
 
