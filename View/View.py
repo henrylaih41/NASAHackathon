@@ -19,19 +19,19 @@ class CharObject():
     def renderStatus(self,screen):
         statusList = []
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['hunger']
-                                 ,self.hunger))
+                                 ,self.hunger,24))
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['thirst']
-                                 ,self.thirst))
+                                 ,self.thirst,24))
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['points']
-                                 ,self.points))
+                                 ,self.points,30))
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['day']
-                                 ,self.day))
+                                 ,self.day,80))
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['pressure']
-                                 ,self.pressure))
+                                 ,self.pressure,22))
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['temperature']
-                                 ,self.temperature))
+                                 ,self.temperature,20))
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['spiritValue']
-                                 ,self.spiritValue))
+                                 ,self.spiritValue,24))
         for status in statusList:
             status.blit(screen)
         pygame.display.flip()
@@ -86,10 +86,10 @@ class FadeObject():
             events = pygame.event.get()
         
 class TextObject():
-    def __init__(self,rect,text,font = viewConst.DEFAULT_FONT):
+    def __init__(self,rect,text,size,font = viewConst.DEFAULT_FONT):
         self.rect = rect,
         self.text = str(text),
-        self.font = pygame.font.SysFont(font, 24)
+        self.font = pygame.font.SysFont(font, size)
         self.color = viewConst.DEFAULT_COLOR
 
     def blit(self,screen):
