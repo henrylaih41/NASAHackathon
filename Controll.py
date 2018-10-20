@@ -65,6 +65,11 @@ class Controll():
 					self.gameState.append(MAIN_PAGE)
 					self.model.initilize()
 					self.view.update({"start":True})
+
+				if crt["name"] == "thatsAll":
+					self.gameState.append(MAIN_PAGE)
+					self.model.initilize()
+					self.view.update({"start":True})
 				else:
 					self.model.update({"part":"action","action":crt["name"]})
 
