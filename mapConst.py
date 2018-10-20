@@ -4,7 +4,8 @@ chooseMap = 100010
 
 
 # stations
-stationMap = {"name":"Investigation station",
+stationMap = {"ID":0,
+			"name":"Investigation station",
 			"event":{
 				"penguin":{
 						"choose":{"look":{"spirit":30,
@@ -26,7 +27,8 @@ stationMap = {"name":"Investigation station",
 				}},
 			"human":{}}
 
-plateauMap = {"name":"Plateau",
+plateauMap = {"ID":1,
+			"name":"Plateau",
 			"event":{
 				"blizzard":{"new":"died"}},
 			"human":{
@@ -41,7 +43,9 @@ plateauMap = {"name":"Plateau",
 startMapDetail = {"action":"choose","action":"move","mapShow":False,}
 
 
-seashoreMap = {"name":"Seashore",
+seashoreMap = {
+			"ID":2,
+			"name":"Seashore",
 			"event":{
 				"fishing":{
 					"choose":{"do":{"hunger":-20}},
