@@ -23,7 +23,7 @@ class GameModel():
 		pass
 
 	def update(self,inpu):
-		if inpu["part"] == pack:
+		if inpu["part"] == "pack":
 			self.pack.take(inpu["target"])
 		else:
 			print("HIHIHIHI")

@@ -47,7 +47,7 @@ class Controll():
 				action = "choose"
 				name = crt["name"]
 				if crt["result"] == "yes":
-					self.model.update({"part":pack,"action":take,"target":crt["name"]})
+					self.model.update({"part":"pack","action":take,"target":crt["name"]})
 				elif crt["result"] == "no":
 					continue
 				else:
