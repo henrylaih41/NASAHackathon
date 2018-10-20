@@ -28,16 +28,13 @@ class GameModel():
 			print("WTF am I doing at model.py??????")
 			time.sleep(1000000000000)
 			return
+			
 		if inpu["part"] == "pack":
 			if self.pack.take(inpu["target"]):
 				if self.pack.full():
 					return {"action":"endChoose"}
 				else:
 					return {"action":None}
-<<<<<<< HEAD
-		elif inpu:
-=======
 		else:
->>>>>>> 92907cec8bd8e970bec85d1613a24a8436be8303
 			print("HIHIHIHI")
 

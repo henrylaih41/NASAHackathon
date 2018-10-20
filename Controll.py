@@ -21,6 +21,7 @@ class Controll():
 
 		# map state
 		self.map = HIDE
+		self.showItem = None
 
 	def run(self):
 		self.view.initView()
@@ -42,13 +43,13 @@ class Controll():
 				self.view.update({"name":crt["name"],"action":"windowControll"})
 
 			elif crt["type"] == "showDetail":
+				self.showItem = crt["name"]
 				self.view.update({"name":crt["name"],"action":"showDetail"})
 
 			elif crt["type"] == "choose":
 				action = "choose"
-				name = crt["name"]
 				if crt["result"] == "yes":
-					self.model.update({"part":"pack","action":"take","target":crt["name"]})
+					self.model.update({"part":"pack","action":"take","target":self.showItem})
 
 				elif crt["result"] == "no":
 					pass
@@ -56,12 +57,16 @@ class Controll():
 				else:
 					print("WTF is Henry doing?")
 					
-				self.view.update({"name":name,"action":action, "counter":len(self.model.pack.items)})
+				self.view.update({"name":self.showItem ,"action":action, "counter":len(self.model.pack.items)})
 
 			elif crt["type"] == "action":
 				if "name" not in crt:
 					print("WTF is Henry doing?")
 
+				if crt["name"] == "startButton":
+					self.gameState.append(MAIN_PAGE)
+					self.model.initilize()
+					self.view.update({"start":True})
 				else:
 					self.model.update({"part":"action","action":crt["name"]})
 
