@@ -27,3 +27,4 @@ ITEM_DICT = {"food" : 1000,
 "bottle" : 1011,
 "flashlight" : 1012
 }
+

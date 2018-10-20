@@ -3,7 +3,11 @@
         "type" : "image",
         "pos" : [0,0]
     },
-
+    "thatsAll": {
+        "type" : "image",
+        "pos" : [700,200],
+        "clickable" : 1
+    },
     "ball": {
         "type" : "image",
         "pos" : [270,420],

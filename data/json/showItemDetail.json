@@ -1,5 +1,5 @@
 {
-    "1000" : {
+    "food" : {
         "food_detail" : {"type" : "image",
                     "pos" : [330,180]
         },
@@ -13,7 +13,7 @@
         }
     },
 
-    "1001" : {
+    "wattlebottle" : {
         "wattlebottle_detail" : {"type" : "image",
                     "pos" : [330,180]
         },
@@ -27,7 +27,7 @@
         }
     },
 
-    "1003" : {
+    "goggle" : {
         "goggle_detail" : {"type" : "image",
                     "pos" : [330,180]
         },
@@ -40,7 +40,7 @@
                     "clickable" : 2
         }
     },
-    "1004" : {
+    "skiiboard" : {
         "skiiboard_detail" : {"type" : "image",
                     "pos" : [330,180]
         },
@@ -53,7 +53,7 @@
                     "clickable" : 2
         }
     },
-    "1005" : {
+    "knife" : {
         "knife_detail" : {"type" : "image",
                     "pos" : [330,180]
         },
@@ -66,7 +66,7 @@
                     "clickable" : 2
         }
     },
-    "1006" : {
+    "vitaminc" : {
         "vitaminc_detail" : {"type" : "image",
                     "pos" : [330,180]
         },
@@ -79,7 +79,7 @@
                     "clickable" : 2
         }
     },
-    "1007" : {
+    "lifebuoy" : {
         "lifebuoy_detail" : {"type" : "image",
                     "pos" : [330,180]
         },
@@ -92,7 +92,7 @@
                     "clickable" : 2
         }
     },
-    "1008" : {
+    "diary" : {
         "diary_detail" : {"type" : "image",
                     "pos" : [330,180]
         },
@@ -105,7 +105,7 @@
                     "clickable" : 2
         }
     },
-    "1009" : {
+    "pen" : {
         "pen_detail" : {"type" : "image",
                     "pos" : [330,180]
         },
@@ -118,7 +118,7 @@
                     "clickable" : 2
         }
     },
-    "1010" : {
+    "ball" : {
         "ball_detail" : {"type" : "image",
                     "pos" : [330,180]
         },
@@ -131,7 +131,7 @@
                     "clickable" : 2
         }
     },
-    "1011" : {
+    "bottle" : {
         "bottle_detail" : {"type" : "image",
                     "pos" : [330,180]
         },
@@ -144,7 +144,7 @@
                     "clickable" : 2
         }
     },
-    "1012" : {
+    "flashlight" : {
         "flashlight_detail" : {"type" : "image",
                     "pos" : [330,180]
         },
