@@ -27,6 +27,7 @@ class Controll():
 		self.model.initilize()
 		while len(self.gameState) != 0:
 			crt = self.view.userInput()
+			print(crt)
 			# key: "map" ,"page", "type"("item","move","windowControll","showDetail","choose","action"),"name"
 			if crt["type"] == "item":
 				action = "showDetail"
