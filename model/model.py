@@ -24,14 +24,20 @@ class GameModel():
 
 
 	def move(self,target):
-		print("?????????????")
+		# print("?????????????")
 		self.longitude = target["site"][0]
 		self.latitude = target["site"][1]
 		self.tp.upgrade(self.longitude,self.latitude)
 		self.tp.set_basic(self.time,self.longitude,self.latitude)
 		self.temperature = self.tp.predict_temp(self.longitude,self.latitude)
 		self.pressure = self.tp.predict_press(self.longitude,self.latitude)
-
+		ev = {"temp":self.temperature,
+				"pressure":self.pressure,
+				"day":int(self.time),
+				"hour":int(24*(self.time-int(self.time)))} 
+		# print(self.player)
+		pl = self.player.getState()
+		return {**ev, **pl}
 	def mapEvent(self,inputer):
 		# self.site["i"]
 		pass
