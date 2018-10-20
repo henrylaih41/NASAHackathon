@@ -17,7 +17,7 @@ class GameModel():
 		self.latitude = 0
 
 	def initilize(self):
-		pass
+		self.time = 1
 
 	def mapEvent(self,inputer):
 		# self.site["i"]
@@ -28,7 +28,7 @@ class GameModel():
 			print("WTF am I doing at model.py??????")
 			time.sleep(1000000000000)
 			return
-			
+
 		if inpu["part"] == "pack":
 			if self.pack.take(inpu["target"]):
 				if self.pack.full():

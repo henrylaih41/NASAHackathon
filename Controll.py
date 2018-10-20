@@ -66,25 +66,23 @@ class Controll():
 					self.model.initilize()
 					self.view.update({"start":True})
 
+
+
 				if crt["name"] == "thatsAll":
+					self.gameState.append(STORY_PAGE)
+					self.view.update({"start":True})
+
+				if crt["name"] == "IGotIt":
 					self.gameState.append(MAIN_PAGE)
 					self.model.initilize()
 					self.view.update({"start":True})
+
 				else:
 					self.model.update({"part":"action","action":crt["name"]})
 
 			else:
 				print("WTF is Henry doing?")
-			# crt ~
-			# viewT = self.model.update(crt)
-			# self.view.update(viewT)
-			# do something
-			# pass
 
-		# self.view.closeGame()
-	def updateView(self, crt = {}):
-		# self.
-		pass	
 
 
 
