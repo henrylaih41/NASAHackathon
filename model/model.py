@@ -2,6 +2,7 @@ from model.modelConst import *
 from model.player import *
 from model.pack import *
 from mapConst import *
+from src.predict import *
 import random
 import time
 class GameModel():
@@ -9,15 +10,27 @@ class GameModel():
 		self.player = Player()
 		self.pack = Pack()
 		self.site = startMap
+		self.tp = temp_press()
 
 		self.randomEven = None
 		self.temperature = None
+		self.pressure = None
 		self.height = None
 		self.longitude = 0
 		self.latitude = 0
 
 	def initilize(self):
 		self.time = 1
+
+
+	def move(self,target):
+		print("?????????????")
+		self.longitude = target["site"][0]
+		self.latitude = target["site"][1]
+		self.tp.upgrade(self.longitude,self.latitude)
+		self.tp.set_basic(self.time,self.longitude,self.latitude)
+		self.temperature = self.tp.predict_temp(self.longitude,self.latitude)
+		self.pressure = self.tp.predict_press(self.longitude,self.latitude)
 
 	def mapEvent(self,inputer):
 		# self.site["i"]
