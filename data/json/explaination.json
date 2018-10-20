@@ -1,0 +1,17 @@
+{
+    "animation" :{
+        "type" : "animation",
+        "image_list" : ["explanation-1","explanation-2","explanation-3"
+                        ,"explanation-4","explanation-5"],
+        "timeInterval" : 50
+    },
+
+    "explanation-5": {"type" : "image",
+                      "pos" : [0,0]
+    },
+
+    "IGotIt" : {"type" : "image",
+                "pos" : [850,600],
+                "clickable" : 1
+    }
+}

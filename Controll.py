@@ -66,8 +66,6 @@ class Controll():
 					self.model.initilize()
 					self.view.update({"start":True})
 
-
-
 				if crt["name"] == "thatsAll":
 					self.gameState.append(STORY_PAGE)
 					self.view.update({"start":True})

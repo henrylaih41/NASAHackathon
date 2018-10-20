@@ -6,6 +6,29 @@ import const as const
 import time as t
 import json as j
 import math
+class CharObject():
+    def __init__(self):
+        self.hunger = 60
+        self.thirst = 60
+        self.spiritValue = 80
+        self.points = 10
+        self.day = 1
+        self.temperature = -12
+        self.pressure = 1000
+
+    def renderStatus(self):
+        hungerValue = TextObject(viewConst.CHAR_RENDER_POS[self.hunger]
+                                 ,self.hunger)
+        hungerValue = TextObject(viewConst.CHAR_RENDER_POS[self.hunger]
+                                 ,self.hunger)
+        hungerValue = TextObject(viewConst.CHAR_RENDER_POS[self.hunger]
+                                 ,self.hunger)
+        hungerValue = TextObject(viewConst.CHAR_RENDER_POS[self.hunger]
+                                 ,self.hunger)
+        hungerValue = TextObject(viewConst.CHAR_RENDER_POS[self.hunger]
+                                 ,self.hunger)
+        hungerValue = TextObject(viewConst.CHAR_RENDER_POS[self.hunger]
+                                 ,self.hunger)
 class AnimateObject():
     def __init__(self,image_list,time):
         self.imageList = image_list
@@ -61,8 +84,7 @@ class TextObject():
         self.rect = rect,
         self.text = text,
         self.font = pygame.font.SysFont(font, 24)
-        self.font.set_italic(True)
-        self.color = const.DEFAULT_COLOR
+        self.color = viewConst.DEFAULT_COLOR
 
     def blit(self,screen):
         self.textBlit(screen,self.text[0],self.color
@@ -115,6 +137,9 @@ class ImageObject():
         self.clickable = click
         self.effect = False
         self.type = None
+    
+    def blit_by_rect(self,screen,rect):
+        screen.blit(self.picture,rect)
 
     def blit(self,screen):
         if not self.effect or self.effectPic is None:
@@ -215,20 +240,30 @@ class View:
 
     def update(self,d):
         print(d)
+
+        if(self.mapStat == mapConst.explainMap):
+            if(d.get('start')):
+                self.mapStat = mapConst.stationMap['ID']
+                self.updateObj(self.readJson('station.json'))
+
         if(self.mapStat == mapConst.chooseMap):
-            if (d['action'] == "showDetail"):
+            if (d.get('action') == "showDetail"):
                 self.updateObj(self.readJson('showItemDetail.json')[str(d['name'])],adjust=True)
                 self.clickLevel = 2
             
-            if(d['action'] == "choose"):
+            if(d.get('action') == "choose"):
                 self.updateObj(self.readJson('choseItem' + str(d['counter']) + '.json'))
                 print(d['name'])
                 for name in d['name']:
                     self.ViewElements[name].clickable = 0
                 self.clickLevel = 1
 
+            if(d.get('start')):
+                self.mapStat = mapConst.explainMap
+                self.updateObj(self.readJson("explaination.json"))
+
         if(self.mapStat == mapConst.startMap):
-            if(d['start']):
+            if(d.get('start')):
                 self.updateObj(self.readJson('choseItem.json'))
                 self.mapStat = mapConst.chooseMap
         

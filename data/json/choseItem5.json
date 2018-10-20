@@ -5,7 +5,7 @@
     },
     "thatsAll": {
         "type" : "image",
-        "pos" : [700,200],
+        "pos" : [820,270],
         "clickable" : 1
     },
     "ball": {

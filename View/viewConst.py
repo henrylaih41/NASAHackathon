@@ -14,17 +14,13 @@ DEFAULT_FONT = 'monospace'
 DEFAULT_COLOR = (0,0,0)
 OUT = -9999
 
-ITEM_DICT = {"food" : 1000,
-"wattlebottle" : 1001,
-"goggle" : 1003,
-"skiiboard" : 1004,
-"knife" : 1005,
-"vitaminc" : 1006,
-"lifebuoy" : 1007,
-"diary" : 1008,
-"pen" : 1009,
-"ball" : 1010,
-"bottle" : 1011,
-"flashlight" : 1012
+CHAR_RENDER_POS = {
+    'day' : [0,0,0,0],
+    'hunger' : [0,0,0,0],
+    'thirst' : [0,0,0,0],
+    'points' : [0,0,0,0],
+    'pressure' : [0,0,0,0],
+    'temperature' : [0,0,0,0],
+    'spiritValue' : [0,0,0,0]
 }
 

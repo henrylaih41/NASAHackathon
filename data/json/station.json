@@ -1,0 +1,15 @@
+{
+    "investigationStation" : {"type" : "image",
+                              "pos" : [0,0]
+    },
+
+    "backpack" : {"type" : "image",
+                  "pos" : [970,50],
+                  "clickable" : 1
+    },
+
+    "seashoresButton" : {"type" : "image",
+                         "pos" : [800,500],
+                         "clickable" : 1
+    }
+}

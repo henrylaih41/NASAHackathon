@@ -1,0 +1,15 @@
+{
+    "seashoreStation" : { "type" : "image",
+                          "pos" : [0,0]
+    },
+
+    "investigationButton" : { "type" : "image",
+                              "pos" : [800,400],
+                              "clickable" : 1
+    },
+
+    "plateauButton" : { "type" : "image",
+                        "pos" : [800,600],
+                        "clickable" : 1
+    }
+}

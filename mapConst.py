@@ -1,7 +1,7 @@
 # start map
 startMap = 100000
 chooseMap = 100010
-
+explainMap = 100020
 
 # stations
 stationMap = {"ID":0,
