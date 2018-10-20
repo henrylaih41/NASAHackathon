@@ -1,15 +1,14 @@
 from model.modelConst import *
-from itemConst import *
 class Pack():
 	def __init__(self):
 		self.items = []
 		self.open = False
 
-	def take(self,itemNum):
+	def take(self,itemName):
 		if len(self.items) == 5:
 			return False
 		else:
-			self.items.append(itemNum)
+			self.items.append(itemName)
 			return True
 
 	def check(self,item):

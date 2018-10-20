@@ -21,8 +21,8 @@ class Controll():
 
 		# map state
 		self.map = HIDE
-		self.showItem = None
-
+		self.showItem = []
+		self.itemBuf = None
 	def run(self):
 		self.view.initView()
 		self.model.initilize()
@@ -32,8 +32,8 @@ class Controll():
 			# key: "map" ,"page", "type"("item","move","windowControll","showDetail","choose","action"),"name"
 			if crt["type"] == "item":
 				action = "showDetail"
-				name = crt["name"]
-				self.view.update({"name":name,"action":action})
+				self.itemBuf = crt["name"]
+				self.view.update({"name":crt['name'],"action":action})
 
 			elif crt["type"] == "move":
 				action = "move"
@@ -42,22 +42,20 @@ class Controll():
 			elif crt["type"] == "windowControll":
 				self.view.update({"name":crt["name"],"action":"windowControll"})
 
-			elif crt["type"] == "showDetail":
-				self.showItem = crt["name"]
-				self.view.update({"name":crt["name"],"action":"showDetail"})
-
 			elif crt["type"] == "choose":
 				action = "choose"
 				if crt["result"] == "yes":
-					self.model.update({"part":"pack","action":"take","target":self.showItem})
+					self.showItem.append(self.itemBuf)
+					self.model.update({"part":"pack","action":"take","target":self.itemBuf})
 
 				elif crt["result"] == "no":
+					itemBuf = None
 					pass
 
 				else:
 					print("WTF is Henry doing?")
 					
-				self.view.update({"name":self.showItem ,"action":action, "counter":len(self.model.pack.items)})
+				self.view.update({"name":self.showItem ,"action":action, "counter":len(self.model.pack.items),"result":crt["result"]})
 
 			elif crt["type"] == "action":
 				if "name" not in crt:

@@ -1,5 +1,6 @@
 # start map
 startMap = 100000
+chooseMap = 100010
 
 
 # stations
@@ -37,6 +38,8 @@ plateauMap = {"name":"Plateau",
 									}
 					}
 			}
+startMapDetail = {"action":"choose","action":"move","mapShow":False,}
+
 
 seashoreMap = {"name":"Seashore",
 			"event":{

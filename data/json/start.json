@@ -1,0 +1,15 @@
+{
+    "cover" : {"type" : "image",
+                "pos" : [0,0]
+    },
+
+    "startButton" : {"type" : "image",
+                     "pos" : [800,500],
+                     "clickable" : 1
+    },
+
+    "resumeButton" : {"type" : "image",
+                      "pos" : [800,580],
+                      "clickable" : 1
+    }
+}

@@ -10,7 +10,7 @@ class AnimateObject():
     def __init__(self,image_list,time):
         self.imageList = image_list
         self.timeInterval = time
-        self.fadeSpeed = 8
+        self.fadeSpeed = 24
 
     def play(self,view):
         for imageName in self.imageList:
@@ -124,9 +124,6 @@ class ImageObject():
 
     def detectCollision(self,x,y,level):
         ### if clickable, check if clicked else return false
-        print(self.clickable, level)
-        print(self.name)
-        print(self.rect)
         if self.clickable >= level:
             return self.rect.collidepoint(x,y)
         else:
@@ -144,7 +141,7 @@ class View:
         self.ViewElements = {}
         #self.objDict = {}
         self.gameScreen = pygame.display.set_mode(viewConst.WINDOW_SIZE)
-        self.mapStat = 100000
+        self.mapStat = mapConst.startMap
         self.pageStat = const.OPEN_PAGE
         self.clickLevel = 1
 
@@ -164,10 +161,9 @@ class View:
             elementsName = map(lambda x:x.replace(".png",""),elementsPath)
             for name in elementsName:
                 self.loadImage(name,path=path)
-                print(self.ViewElements[name].rect)
                 print(name, "Loaded")
 
-        start = self.readJson("choseitem.json")
+        start = self.readJson("start.json")
         self.updateObj(start)
     
     ### Loads the png to dictionary
@@ -177,6 +173,10 @@ class View:
             image = pygame.transform.scale(image, viewConst.WINDOW_SIZE)
         try:
             effImage = pygame.image.load(path + name + "_eff.png")
+            #rect = image.get_rect()
+            #print(rect)
+            #effImage = pygame.transform.scale(image, (rect[2]*1.5,rect[3]*1.5))
+            #print("eff",effImage.get_rect())
         except:
             effImage = None
         self.ViewElements[name] = ImageObject(name,image,effImage)
@@ -188,9 +188,12 @@ class View:
             viewConst.WINDOW_CONTROLL_PNG_PATH : "windowControll",
             viewConst.CHOOSE_PNG_PATH : "choose"
         }.get(path,None)
-
+    
+    def adjustObj(self,name,pos):
+        self.ViewElements[name].setAttr(pos)
     ### Create ImageObj if doesn't exist in ObjDict, else update it.
     ### Default type is image
+
     def updateObj(self,infoList,adjust=False):
         fade = None
         if(not adjust):
@@ -198,7 +201,6 @@ class View:
         for name,info in infoList.items():
             if (info['type'] == "image"):
                 self.ViewElements[name].setAttr(info['pos'],info.get('clickable'))
-                print(self.ViewElements[name].rect)
             elif(info['type'] == "fade"):
                 fade = FadeObject(info.get('speed'))
             elif(info['type'] == "animation"):
@@ -212,12 +214,23 @@ class View:
             self.show()
 
     def update(self,d):
-        if (d['action'] == "showDetail"):
-            self.updateObj(self.readJson('showItemDetail.json')[str(d['name'])],adjust=True)
-            self.clickLevel = 2
-        if(d['action'] == "choose"):
-            self.updateObj(self.readJson('choseItem' + str(d['counter']) + '.json'))
-            self.clickLevel = 1
+        print(d)
+        if(self.mapStat == mapConst.chooseMap):
+            if (d['action'] == "showDetail"):
+                self.updateObj(self.readJson('showItemDetail.json')[str(d['name'])],adjust=True)
+                self.clickLevel = 2
+            
+            if(d['action'] == "choose"):
+                self.updateObj(self.readJson('choseItem' + str(d['counter']) + '.json'))
+                print(d['name'])
+                for name in d['name']:
+                    self.ViewElements[name].clickable = 0
+                self.clickLevel = 1
+
+        if(self.mapStat == mapConst.startMap):
+            if(d['start']):
+                self.updateObj(self.readJson('choseItem.json'))
+                self.mapStat = mapConst.chooseMap
         
         
     ### Blit the ImageObj in objDict, clears the screen using the background
@@ -257,7 +270,8 @@ class View:
                         return self.clickInfo(clickedObj)
                 ### changes the pic when mouse on obj
                 ### Implemented poorly due to limited time
-                """if event.type == pygame.MOUSEMOTION:
+                """
+                if event.type == pygame.MOUSEMOTION:
                     x, y = pygame.mouse.get_pos()
                     clickedObj = self.checkClickObj(x,y)
                     if clickedObj is not None:
@@ -273,11 +287,11 @@ class View:
                 
 
     def clickInfo(self,clickedObj):
-        if clickedObj.type == 'item':
+        if clickedObj.type == 'item' or clickedObj.type == 'action':
             return {
                     "map" : self.mapStat,
                     "page" : self.pageStat,
-                    "name" : viewConst.ITEM_DICT[clickedObj.name],
+                    "name" : clickedObj.name,
                     "type" : clickedObj.type
             }
         elif clickedObj.type == 'choose':
