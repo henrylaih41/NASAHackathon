@@ -1,0 +1,68 @@
+{
+    "equip5": {
+        "type" : "image",
+        "pos" : [0,0]
+    },
+
+    "ball": {
+        "type" : "image",
+        "pos" : [270,370],
+        "clickable": 1
+    },
+
+    "bottle": {
+        "type" : "image",
+        "pos" : [510,400],
+        "clickable" : 1
+    },
+    "diary": {
+        "type" : "image",
+        "pos" : [350,340],
+        "clickable" : 1
+    },
+    "flashlight": {
+        "type" : "image",
+        "pos" : [240,470],
+        "clickable" : 1
+    },
+    "food": {
+        "type" : "image",
+        "pos" : [590,300],
+        "clickable" : 1
+    },
+    "goggle": {
+        "type" : "image",
+        "pos" : [240,300],
+        "clickable" : 1
+    },
+    "knife": {
+        "type" : "image",
+        "pos" : [380,520],
+        "clickable" : 1
+    },
+    "lifebuoy": {
+        "type" : "image",
+        "pos" : [460,270],
+        "clickable" : 1
+    },
+    "pen": {
+        "type" : "image",
+        "pos" : [370,240],
+        "clickable" : 1
+    },
+    "skiiboard": {
+        "type" : "image",
+        "pos" : [180,300],
+        "clickable" : 1
+    },
+    "vitaminc": {
+        "type" : "image",
+        "pos" : [380,440],
+        "clickable" : 1
+    },
+    "wattlebottle": {
+        "type" : "image",
+        "pos" : [575,440],
+        "clickable" : 1
+    }
+}

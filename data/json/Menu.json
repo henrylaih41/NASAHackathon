@@ -1,0 +1,42 @@
+{   
+    "animation" :{
+        "type" : "animation",
+        "image_list" : ["B2penguin"],
+        "timeInterval" : 3000
+    },
+
+    "animation" :{
+        "type" : "animation",
+        "image_list" : ["1","2","3","4","5"],
+        "timeInterval" : 1500
+    },
+
+    "animation" :{
+        "type" : "animation",
+        "image_list" : ["A4penguin","6wreck","7wreck","8equipment"],
+        "timeInterval" : 3000
+    },
+    
+    "fade":{ 
+        "type" : "fade",
+        "speed" : 8,
+        "pos" : [0,0],
+        "color": [0,0,0],
+        "startTransparent": 255
+    },
+
+    "ice": {   
+        "type": "image",
+        "pos": [0,0] 
+    },     
+
+    "c0": { 
+            "type": "image",
+            "pos": [540,500],
+            "clickable": 1
+    },
+
+    "c1": { 
+            "type": "image", 
+            "pos" : [200,200]}    
+}

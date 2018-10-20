@@ -1,0 +1,72 @@
+{
+    "1000" : {
+        "food_detail" : {"type" : "image",
+                    "pos" : [330,180]
+        },
+        "pick" : {"type" : "image",
+                  "pos"  : [395,540],
+                  "clickable" : 2
+        },
+        "cancel" : {"type" : "image",
+                    "pos" : [535,530],
+                    "clickable" : 2
+        }
+    },
+
+    "1001" : {
+        "wattlebottle_detail" : {"type" : "image",
+                          "pos" : [500,300]
+        }
+    },
+
+    "1003" : {
+        "goggle_detail" : {"type" : "image",
+                    "pos" : [500,300]
+        }
+    },
+    "1004" : {
+        "skiiboard_detail" : {"type" : "image",
+                    "pos" : [500,300]
+        }
+    },
+    "1005" : {
+        "knife_detail" : {"type" : "image",
+                    "pos" : [500,300]
+        }
+    },
+    "1006" : {
+        "vitaminc_detail" : {"type" : "image",
+                    "pos" : [500,300]
+        }
+    },
+    "1007" : {
+        "lifebuoy_detail" : {"type" : "image",
+                    "pos" : [500,300]
+        }
+    },
+    "1008" : {
+        "diary_detail" : {"type" : "image",
+                    "pos" : [500,300]
+        }
+    },
+    "1009" : {
+        "pen_detail" : {"type" : "image",
+                    "pos" : [500,300]
+        }
+    },
+    "1010" : {
+        "ball_detail" : {"type" : "image",
+                    "pos" : [500,300]
+        }
+    },
+    "1011" : {
+        "bottle_detail" : {"type" : "image",
+                    "pos" : [500,300]
+        }
+    },
+    "1012" : {
+        "flashlight_detail" : {"type" : "image",
+                        "pos" : [500,300]
+        }
+    }
+}
