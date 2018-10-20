@@ -24,7 +24,11 @@ class GameModel():
 
 	def update(self,inpu):
 		if inpu["part"] == "pack":
-			self.pack.take(inpu["target"])
+			if self.pack.take(inpu["target"]):
+				if self.pack.full():
+					return {"action":"endChoose"}
+				else:
+					return {"action":null}
 		else:
 			print("HIHIHIHI")
 

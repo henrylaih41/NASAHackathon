@@ -15,6 +15,9 @@ class Pack():
 	def check(self,item):
 		return item in self.items
 
+	def full(self):
+		return len(self.items) == 5
+
 	def getPack(self):
 		return self.items
 
