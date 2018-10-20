@@ -3,7 +3,7 @@
                           "pos" : [0,0]
     },
 
-    "investigationButton" : { "type" : "image",
+    "investigationStationButton" : { "type" : "image",
                               "pos" : [800,400],
                               "clickable" : 1
     },

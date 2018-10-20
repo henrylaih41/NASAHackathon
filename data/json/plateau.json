@@ -1,0 +1,10 @@
+{
+    "plateauStation" : { "type" : "image",
+                          "pos" : [0,0]
+    },
+
+    "seashoreButton" : {"type" : "image",
+                         "pos" : [800,500],
+                         "clickable" : 1
+    }
+}

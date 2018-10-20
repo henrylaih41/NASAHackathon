@@ -8,7 +8,7 @@
                   "clickable" : 1
     },
 
-    "seashoresButton" : {"type" : "image",
+    "seashoreButton" : {"type" : "image",
                          "pos" : [800,500],
                          "clickable" : 1
     }

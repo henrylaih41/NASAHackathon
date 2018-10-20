@@ -13,6 +13,7 @@ class CharObject():
         self.spiritValue = 80
         self.points = 10
         self.day = 1
+        self.hour = 8
         self.temperature = -12
         self.pressure = 1000
 
@@ -23,15 +24,18 @@ class CharObject():
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['thirst']
                                  ,self.thirst,24))
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['points']
-                                 ,self.points,30))
+                                 ,self.points,28))
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['day']
-                                 ,self.day,80))
+                                 ,self.day,60))
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['pressure']
                                  ,self.pressure,22))
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['temperature']
-                                 ,self.temperature,20))
+                                 ,self.temperature,22))
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['spiritValue']
-                                 ,self.spiritValue,24))
+                                 ,self.spiritValue,24)),
+        statusList.append(TextObject(viewConst.CHAR_RENDER_POS['hour']
+                                 ,self.hour,44))
+        
         for status in statusList:
             status.blit(screen)
         pygame.display.flip()
@@ -145,7 +149,8 @@ class ImageObject():
         self.type = None
     
     def blit_by_rect(self,screen,rect):
-        screen.blit(self.picture,rect)
+        pic = pygame.transform.scale(self.picture,(rect[2],rect[3]))
+        screen.blit(pic,rect)
 
     def blit(self,screen):
         if not self.effect or self.effectPic is None:
@@ -247,11 +252,33 @@ class View:
 
     def update(self,d):
         print(d)
+       
+
+        if(self.mapStat == mapConst.seashoreMap['ID']):
+            if(d.get('action') == 'move'):
+                if(d.get('target') == "stationMap"):
+                    self.mapStat = mapConst.stationMap['ID']
+                    self.updateObj(self.readJson('station.json'))
+                elif(d.get('target') == "plateauMap"):
+                    self.mapStat = mapConst.plateauMap['ID']
+                    self.updateObj(self.readJson('plateau.json'))
+                ###
+                self.char = CharObject()
+                self.char.renderStatus(self.gameScreen)
+
+        if(self.mapStat == mapConst.stationMap['ID']):
+            if(d.get('action') == 'move'):
+                self.mapStat = mapConst.seashoreMap['ID']
+                self.updateObj(self.readJson('seashore.json'))
+                ###
+                self.char = CharObject()
+                self.char.renderStatus(self.gameScreen)
 
         if(self.mapStat == mapConst.explainMap):
             if(d.get('start')):
                 self.mapStat = mapConst.stationMap['ID']
                 self.updateObj(self.readJson('station.json'))
+                ###
                 self.char = CharObject()
                 self.char.renderStatus(self.gameScreen)
 
@@ -264,7 +291,10 @@ class View:
                 self.updateObj(self.readJson('choseItem' + str(d['counter']) + '.json'))
                 print(d['name'])
                 for name in d['name']:
+                    self.ViewElements['cross'].blit_by_rect(self.gameScreen,self.ViewElements[name].rect)
                     self.ViewElements[name].clickable = 0
+                pygame.display.flip()
+                pygame.event.get()
                 self.clickLevel = 1
 
             if(d.get('start')):
@@ -331,7 +361,8 @@ class View:
                 
 
     def clickInfo(self,clickedObj):
-        if clickedObj.type == 'item' or clickedObj.type == 'action':
+        if clickedObj.type == 'item' or clickedObj.type == 'action' \
+                                     or clickedObj.type == 'move':
             return {
                     "map" : self.mapStat,
                     "page" : self.pageStat,

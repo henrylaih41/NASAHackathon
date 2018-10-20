@@ -9,6 +9,7 @@ class temp_press:
         self.cold = 0
         self.cold_count = 11
         self.cold_bool = True
+        self.time = 0 ### ask 
     
     def set_basic(self, time, longtitude, altitude): ###Called When time change, time is float 0~365
         self.time = time                             

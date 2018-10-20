@@ -3,7 +3,7 @@ import time
 from const import *
 from View.View import View
 from model.model import GameModel
-
+from mapConst import *
 #########################
 #	record game state
 #	
@@ -40,13 +40,16 @@ class Controll():
 				# name: seashoreButton, investigationStationButton, plateauButton
 				if crt["name"] == "seashoreButton":
 					target = seashoreMap
-
+					moveto = "seashoreMap"
 				elif crt["name"] == "investigationStationButton":
 					target = stationMap
-
+					moveto = "stationMap"
 				elif crt["name"] == "plateauButton":
 					target = plateauMap
-
+					moveto = "plateauMap"
+				### update(dir) dir = {target:,action:,status:{}} 
+				### store the states in a dictionary
+				self.view.update({"target":moveto,"action":"move"})
 				self.model.move(target)
 
 			elif crt["type"] == "windowControll":
