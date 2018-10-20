@@ -5,7 +5,8 @@ MOVE_PNG_PATH = 'data/png/move/'
 ACTION_PNG_PATH = 'data/png/action/'
 SHOWDETAIL_PNG_PATH = 'data/png/showDetail/'
 WINDOW_CONTROLL_PNG_PATH = 'data/png/windowControll/' 
-ITEM_FULL_SCREEN = 'data/png/fullscreen/' 
+ITEM_FULL_SCREEN = 'data/png/fullscreen/'
+CHOOSE_PNG_PATH = 'data/png/choose/' 
 JSON_PATH = "data/json/"
 ANIMATION_PATH = "data/animation/"
 

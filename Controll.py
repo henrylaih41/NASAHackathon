@@ -26,13 +26,8 @@ class Controll():
 		self.view.initView()
 		self.model.initilize()
 		while len(self.gameState) != 0:
-<<<<<<< HEAD
 			crt = self.view.userInput()
 			# key: "map" ,"page", "type"("item","move","windowControll","showDetail","choose","action"),"name"
-=======
-			crt = self.view.uerInput()
-			# key: "map" ,"page", "type"("item","move","windowControll","showDetail","choose","action"),"name","result"
->>>>>>> c7458f9cc22a0d49afbe63eb691fc13c378d0766
 			if crt["type"] == "item":
 				action = "showDetail"
 				name = crt["name"]
@@ -61,7 +56,7 @@ class Controll():
 				self.view.update({"name":name,"action":action, "counter":len(self.model.pack.items)})
 
 			elif crt["type"] == "action":
-
+				pass
 			else:
 				print("WTF is Henry doing?")
 			# crt ~

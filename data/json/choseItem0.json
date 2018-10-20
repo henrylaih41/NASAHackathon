@@ -1,68 +1,68 @@
 {
-    "equip4": {
+    "equip0": {
         "type" : "image",
         "pos" : [0,0]
     },
 
     "ball": {
         "type" : "image",
-        "pos" : [270,420],
+        "pos" : [270,370],
         "clickable": 1
     },
 
     "bottle": {
         "type" : "image",
-        "pos" : [510,450],
+        "pos" : [510,400],
         "clickable" : 1
     },
     "diary": {
         "type" : "image",
-        "pos" : [350,390],
+        "pos" : [350,340],
         "clickable" : 1
     },
     "flashlight": {
         "type" : "image",
-        "pos" : [240,520],
+        "pos" : [240,470],
         "clickable" : 1
     },
     "food": {
         "type" : "image",
-        "pos" : [590,350],
+        "pos" : [590,300],
         "clickable" : 1
     },
     "goggle": {
         "type" : "image",
-        "pos" : [240,350],
+        "pos" : [240,300],
         "clickable" : 1
     },
     "knife": {
         "type" : "image",
-        "pos" : [380,570],
+        "pos" : [380,520],
         "clickable" : 1
     },
     "lifebuoy": {
         "type" : "image",
-        "pos" : [460,320],
+        "pos" : [460,270],
         "clickable" : 1
     },
     "pen": {
         "type" : "image",
-        "pos" : [370,290],
+        "pos" : [370,240],
         "clickable" : 1
     },
     "skiiboard": {
         "type" : "image",
-        "pos" : [180,350],
+        "pos" : [180,300],
         "clickable" : 1
     },
     "vitaminc": {
         "type" : "image",
-        "pos" : [380,490],
+        "pos" : [380,440],
         "clickable" : 1
     },
     "wattlebottle": {
         "type" : "image",
-        "pos" : [575,490],
+        "pos" : [575,440],
         "clickable" : 1
     }
 }

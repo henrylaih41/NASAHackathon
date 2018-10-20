@@ -182,7 +182,8 @@ class View:
             viewConst.MOVE_PNG_PATH : "move",
             viewConst.ACTION_PNG_PATH : "action",
             viewConst.SHOWDETAIL_PNG_PATH : "showDetail",
-            viewConst.WINDOW_CONTROLL_PNG_PATH : "windowControll"
+            viewConst.WINDOW_CONTROLL_PNG_PATH : "windowControll",
+            viewConst.CHOOSE_PNG_PATH : "choose"
         }.get(path,None)
 
     ### Create ImageObj if doesn't exist in ObjDict, else update it.
@@ -208,10 +209,12 @@ class View:
             self.show()
 
     def update(self,d):
-        print(d)
         if (d['action'] == "showDetail"):
             self.updateObj(self.readJson('showItemDetail.json')[str(d['name'])],adjust=True)
             self.clickLevel = 2
+        if(d['action'] == "choose"):
+            self.updateObj(self.readJson('choseItem' + str(d['counter']) + '.json'))
+            self.clickLevel = 1
         
         
     ### Blit the ImageObj in objDict, clears the screen using the background
@@ -266,12 +269,20 @@ class View:
                 """
 
     def clickInfo(self,clickedObj):
-        return {
-                "map" : self.mapStat,
-                "page" : self.pageStat,
-                "name" : viewConst.ITEM_DICT[clickedObj.name],
-                "type" : clickedObj.type
-        }
+        if clickedObj.type == 'item':
+            return {
+                    "map" : self.mapStat,
+                    "page" : self.pageStat,
+                    "name" : viewConst.ITEM_DICT[clickedObj.name],
+                    "type" : clickedObj.type
+            }
+        elif clickedObj.type == 'choose':
+            return {
+                    "map" : self.mapStat,
+                    "page" : self.pageStat,
+                    "name" : clickedObj.name,
+                    "type" : clickedObj.type
+            }
                     
 
                         

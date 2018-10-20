@@ -15,58 +15,146 @@
 
     "1001" : {
         "wattlebottle_detail" : {"type" : "image",
-                          "pos" : [500,300]
+                    "pos" : [330,180]
+        },
+        "pick" : {"type" : "image",
+                  "pos"  : [395,540],
+                  "clickable" : 2
+        },
+        "cancel" : {"type" : "image",
+                    "pos" : [535,530],
+                    "clickable" : 2
         }
     },
 
     "1003" : {
         "goggle_detail" : {"type" : "image",
-                    "pos" : [500,300]
+                    "pos" : [330,180]
+        },
+        "pick" : {"type" : "image",
+                  "pos"  : [395,540],
+                  "clickable" : 2
+        },
+        "cancel" : {"type" : "image",
+                    "pos" : [535,530],
+                    "clickable" : 2
         }
     },
     "1004" : {
         "skiiboard_detail" : {"type" : "image",
-                    "pos" : [500,300]
+                    "pos" : [330,180]
+        },
+        "pick" : {"type" : "image",
+                  "pos"  : [395,540],
+                  "clickable" : 2
+        },
+        "cancel" : {"type" : "image",
+                    "pos" : [535,530],
+                    "clickable" : 2
         }
     },
     "1005" : {
         "knife_detail" : {"type" : "image",
-                    "pos" : [500,300]
+                    "pos" : [330,180]
+        },
+        "pick" : {"type" : "image",
+                  "pos"  : [395,540],
+                  "clickable" : 2
+        },
+        "cancel" : {"type" : "image",
+                    "pos" : [535,530],
+                    "clickable" : 2
         }
     },
     "1006" : {
         "vitaminc_detail" : {"type" : "image",
-                    "pos" : [500,300]
+                    "pos" : [330,180]
+        },
+        "pick" : {"type" : "image",
+                  "pos"  : [395,540],
+                  "clickable" : 2
+        },
+        "cancel" : {"type" : "image",
+                    "pos" : [535,530],
+                    "clickable" : 2
         }
     },
     "1007" : {
         "lifebuoy_detail" : {"type" : "image",
-                    "pos" : [500,300]
+                    "pos" : [330,180]
+        },
+        "pick" : {"type" : "image",
+                  "pos"  : [395,540],
+                  "clickable" : 2
+        },
+        "cancel" : {"type" : "image",
+                    "pos" : [535,530],
+                    "clickable" : 2
         }
     },
     "1008" : {
         "diary_detail" : {"type" : "image",
-                    "pos" : [500,300]
+                    "pos" : [330,180]
+        },
+        "pick" : {"type" : "image",
+                  "pos"  : [395,540],
+                  "clickable" : 2
+        },
+        "cancel" : {"type" : "image",
+                    "pos" : [535,530],
+                    "clickable" : 2
         }
     },
     "1009" : {
         "pen_detail" : {"type" : "image",
-                    "pos" : [500,300]
+                    "pos" : [330,180]
+        },
+        "pick" : {"type" : "image",
+                  "pos"  : [395,540],
+                  "clickable" : 2
+        },
+        "cancel" : {"type" : "image",
+                    "pos" : [535,530],
+                    "clickable" : 2
         }
     },
     "1010" : {
         "ball_detail" : {"type" : "image",
-                    "pos" : [500,300]
+                    "pos" : [330,180]
+        },
+        "pick" : {"type" : "image",
+                  "pos"  : [395,540],
+                  "clickable" : 2
+        },
+        "cancel" : {"type" : "image",
+                    "pos" : [535,530],
+                    "clickable" : 2
         }
     },
     "1011" : {
         "bottle_detail" : {"type" : "image",
-                    "pos" : [500,300]
+                    "pos" : [330,180]
+        },
+        "pick" : {"type" : "image",
+                  "pos"  : [395,540],
+                  "clickable" : 2
+        },
+        "cancel" : {"type" : "image",
+                    "pos" : [535,530],
+                    "clickable" : 2
         }
     },
     "1012" : {
         "flashlight_detail" : {"type" : "image",
-                        "pos" : [500,300]
+                    "pos" : [330,180]
+        },
+        "pick" : {"type" : "image",
+                  "pos"  : [395,540],
+                  "clickable" : 2
+        },
+        "cancel" : {"type" : "image",
+                    "pos" : [535,530],
+                    "clickable" : 2
         }
     }
 }
