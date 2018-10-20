@@ -23,6 +23,7 @@ class Controll():
 		self.map = HIDE
 		self.showItem = []
 		self.itemBuf = None
+
 	def run(self):
 		self.view.initView()
 		self.model.initilize()
@@ -36,8 +37,17 @@ class Controll():
 				self.view.update({"name":crt['name'],"action":action})
 
 			elif crt["type"] == "move":
-				action = "move"
-				self.model.move({"name":crt["name"],"action":"move"})
+				# name: seashoreButton, investigationStationButton, plateauButton
+				if crt["name"] == "seashoreButton":
+					target = seashoreMap
+
+				elif crt["name"] == "investigationStationButton":
+					target = stationMap
+
+				elif crt["name"] == "plateauButton":
+					target = plateauMap
+
+				self.model.move(target)
 
 			elif crt["type"] == "windowControll":
 				self.view.update({"name":crt["name"],"action":"windowControll"})

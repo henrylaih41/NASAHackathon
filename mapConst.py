@@ -25,7 +25,8 @@ stationMap = {"ID":0,
 						"costTime":6},
 				"blizzard":{"_force":"died"}
 				}},
-			"human":{}}
+			"human":{},
+			"site":(66.5,66.3)}
 
 plateauMap = {"ID":1,
 			"name":"Plateau",
@@ -38,7 +39,8 @@ plateauMap = {"ID":1,
 								"point":30,
 								"_force":"back"}
 									}
-					}
+					},
+			"site":(67,66.7)
 			}
 startMapDetail = {"action":"choose","action":"move","mapShow":False,}
 
@@ -56,7 +58,8 @@ seashoreMap = {
 						"costTime":1
 				}
 			},
-			"human":{}}
+			"human":{},
+			"site":(65,66.9)}
 humanDisease = {"scurvy":{"day":8},
 				"hunger":{"food":2},
 				"freeze":-40,
