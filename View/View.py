@@ -49,7 +49,7 @@ class AnimateObject():
     def __init__(self,image_list,time):
         self.imageList = image_list
         self.timeInterval = time
-        self.fadeSpeed = 16
+        self.fadeSpeed = 20
 
     def play(self,view):
         for imageName in self.imageList:
@@ -295,6 +295,7 @@ class View:
                 self.mapStat = mapConst.stationMap['ID']
                 self.updateObj(self.readJson('station.json'))
                 ###
+                self.ViewElements['char0'].blit_by_pos(self.gameScreen,[300,300])
                 self.char = CharObject()
                 self.char.renderStatus(self.gameScreen,self)
 
