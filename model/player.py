@@ -8,6 +8,11 @@ class Player():
 		self.thirst = 0
 		# search history
 		# self.
+	def getState(self):
+		return {"hunger":self.hunger,
+				"spirit":self.spirit,
+				"point":self.point,
+				"thirst":self.thirst}
 
 	def updateHunger(self,num):
 		self.hunger += num
