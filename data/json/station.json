@@ -11,5 +11,13 @@
     "seashoreButton" : {"type" : "image",
                          "pos" : [800,500],
                          "clickable" : 1
+    },
+
+    "station-icon" : {"type" : "image",
+                      "pos" : [500,500]
+    },
+
+    "penguin-icon" : {"type" : "image",
+                      "pos" : [300,600]
     }
 }

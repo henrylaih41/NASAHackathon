@@ -3,7 +3,7 @@
         "type" : "animation",
         "image_list" : ["explanation-1","explanation-2","explanation-3"
                         ,"explanation-4","explanation-5"],
-        "timeInterval" : 50
+        "timeInterval" : 4
     },
 
     "explanation-5": {"type" : "image",

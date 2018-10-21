@@ -2,19 +2,19 @@
     "animation" :{
         "type" : "animation",
         "image_list" : ["B2penguin"],
-        "timeInterval" : 300
+        "timeInterval" : 30
     },
 
     "animation1" :{
         "type" : "animation",
         "image_list" : ["1","2","3","4","5"],
-        "timeInterval" : 100
+        "timeInterval" : 70
     },
 
     "animation2" :{
         "type" : "animation",
         "image_list" : ["A4penguin","6wreck","7wreck","8equipment"],
-        "timeInterval" : 350
+        "timeInterval" : 20
     },
     
     "equip0": {

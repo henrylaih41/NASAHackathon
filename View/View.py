@@ -6,46 +6,50 @@ import const as const
 import time as t
 import json as j
 import math
+import itertools as it
 class CharObject():
     def __init__(self):
         self.hunger = 60
-        self.thirst = 60
-        self.spiritValue = 80
-        self.points = 10
+        self.thirst = 50
+        self.spiritValue = 90
+        self.points = 80
         self.day = 1
         self.hour = 8
         self.temperature = -12
-        self.pressure = 1000
+        self.pressure = 1008
+        self.pos = [300,300]
+        self.action_num = it.cycle(["0","1"])
+        self.movment_speed = 15
 
-    def renderStatus(self,screen):
+    def renderStatus(self,screen,view):
         statusList = []
-        statusList.append(TextObject(viewConst.CHAR_RENDER_POS['hunger']
-                                 ,self.hunger,24))
-        statusList.append(TextObject(viewConst.CHAR_RENDER_POS['thirst']
-                                 ,self.thirst,24))
-        statusList.append(TextObject(viewConst.CHAR_RENDER_POS['points']
-                                 ,self.points,28))
+    
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['day']
                                  ,self.day,60))
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['pressure']
                                  ,self.pressure,22))
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['temperature']
                                  ,self.temperature,22))
-        statusList.append(TextObject(viewConst.CHAR_RENDER_POS['spiritValue']
-                                 ,self.spiritValue,24)),
         statusList.append(TextObject(viewConst.CHAR_RENDER_POS['hour']
                                  ,self.hour,44))
-        
+        barList = [("hunger",self.hunger),("thirst",self.thirst),
+                   ("points",self.points),("spiritValue",self.spiritValue)]
+        for state in barList:
+            l = int(state[1]/10)
+            img = view.ViewElements["bar_" + str(l)]
+            rect = img.rect; rect[0],rect[1] = viewConst.CHAR_RENDER_POS[state[0]] 
+            screen.blit(img.picture,rect)
         for status in statusList:
             status.blit(screen)
+
         pygame.display.flip()
-        pygame.event.get()
+        #pygame.event.get()
 
 class AnimateObject():
     def __init__(self,image_list,time):
         self.imageList = image_list
         self.timeInterval = time
-        self.fadeSpeed = 24
+        self.fadeSpeed = 16
 
     def play(self,view):
         for imageName in self.imageList:
@@ -110,7 +114,6 @@ class TextObject():
 
         # get the height of the font
         fontHeight = font.get_height()
-        print("fontHeight is ", fontHeight)
         while text:
             i = 1
 
@@ -148,6 +151,10 @@ class ImageObject():
         self.effect = False
         self.type = None
     
+    def blit_by_pos(self,screen,pos):
+        self.rect[0],self.rect[1] = pos
+        self.blit(screen)
+
     def blit_by_rect(self,screen,rect):
         pic = pygame.transform.scale(self.picture,(rect[2],rect[3]))
         screen.blit(pic,rect)
@@ -252,9 +259,16 @@ class View:
 
     def update(self,d):
         print(d)
-       
+        if(self.mapStat == mapConst.plateauMap['ID']):
+            if(d.get('action') == 'move'):
+                self.mapStat = mapConst.seashoreMap['ID']
+                self.updateObj(self.readJson('seashore.json'))
+                ###
+                self.ViewElements['char0'].blit_by_pos(self.gameScreen,[300,300])
+                self.char = CharObject()
+                self.char.renderStatus(self.gameScreen,self)
 
-        if(self.mapStat == mapConst.seashoreMap['ID']):
+        elif(self.mapStat == mapConst.seashoreMap['ID']):
             if(d.get('action') == 'move'):
                 if(d.get('target') == "stationMap"):
                     self.mapStat = mapConst.stationMap['ID']
@@ -263,26 +277,28 @@ class View:
                     self.mapStat = mapConst.plateauMap['ID']
                     self.updateObj(self.readJson('plateau.json'))
                 ###
+                self.ViewElements['char0'].blit_by_pos(self.gameScreen,[300,300])
                 self.char = CharObject()
-                self.char.renderStatus(self.gameScreen)
+                self.char.renderStatus(self.gameScreen,self)
 
-        if(self.mapStat == mapConst.stationMap['ID']):
+        elif(self.mapStat == mapConst.stationMap['ID']):
             if(d.get('action') == 'move'):
                 self.mapStat = mapConst.seashoreMap['ID']
                 self.updateObj(self.readJson('seashore.json'))
+                self.ViewElements['char0'].blit_by_pos(self.gameScreen,[300,300])
                 ###
                 self.char = CharObject()
-                self.char.renderStatus(self.gameScreen)
+                self.char.renderStatus(self.gameScreen,self)
 
-        if(self.mapStat == mapConst.explainMap):
+        elif(self.mapStat == mapConst.explainMap):
             if(d.get('start')):
                 self.mapStat = mapConst.stationMap['ID']
                 self.updateObj(self.readJson('station.json'))
                 ###
                 self.char = CharObject()
-                self.char.renderStatus(self.gameScreen)
+                self.char.renderStatus(self.gameScreen,self)
 
-        if(self.mapStat == mapConst.chooseMap):
+        elif(self.mapStat == mapConst.chooseMap):
             if (d.get('action') == "showDetail"):
                 self.updateObj(self.readJson('showItemDetail.json')[str(d['name'])],adjust=True)
                 self.clickLevel = 2
@@ -301,7 +317,7 @@ class View:
                 self.mapStat = mapConst.explainMap
                 self.updateObj(self.readJson("explaination.json"))
 
-        if(self.mapStat == mapConst.startMap):
+        elif(self.mapStat == mapConst.startMap):
             if(d.get('start')):
                 self.updateObj(self.readJson('choseItem.json'))
                 self.mapStat = mapConst.chooseMap
@@ -333,6 +349,7 @@ class View:
     ### Wait for user input, if clicked on clickable obj, return it
     def userInput(self):
         effFlag = False
+        dic = {}
         while(True):
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -342,22 +359,32 @@ class View:
                     clickedObj = self.checkClickObj(x,y)
                     if clickedObj is not None:
                         return self.clickInfo(clickedObj)
-                ### changes the pic when mouse on obj
-                ### Implemented poorly due to limited time
-                """
-                if event.type == pygame.MOUSEMOTION:
-                    x, y = pygame.mouse.get_pos()
-                    clickedObj = self.checkClickObj(x,y)
-                    if clickedObj is not None:
-                        clickedObj.effect = True
-                        clickedObj.blit(self.gameScreen)
-                        pygame.display.update()
-                        clickedObj.effect = False
-                        effFlag = True
-                    elif(effFlag):
-                        self.show()
-                        effFlag = False
-                """
+                if event.type == pygame.KEYDOWN:
+                
+                    if event.key == pygame.K_UP: 
+                        dic["K_UP"] = True
+                    if event.key == pygame.K_DOWN:
+                        dic["K_DOWN"] = True
+                    if event.key == pygame.K_LEFT: 
+                        dic["K_LEFT"] = True
+                    if event.key == pygame.K_RIGHT: 
+                        dic["K_RIGHT"] = True
+                    for m in viewConst.MOVEMENT_LIST:
+                        if(dic.get(m[0],False)):
+                            if (self.mapStat == mapConst.stationMap['ID']):
+                                self.updateObj(self.readJson('station.json'))
+                            elif(self.mapStat == mapConst.seashoreMap['ID']):
+                                self.updateObj(self.readJson('seashore.json'))
+                            elif(self.mapStat == mapConst.plateauMap['ID']):
+                                self.updateObj(self.readJson('plateau.json'))
+                            if(self.char != None):
+                                self.char.renderStatus(self.gameScreen,self)
+                            self.char.pos[m[1]] = m[2](self.char.pos[m[1]],self.char.movment_speed)
+                            self.ViewElements["char" + str(next(self.char.action_num))].blit_by_pos(self.gameScreen,
+                                                                                                    self.char.pos  )
+                    pygame.display.flip()
+                    dic.clear()
+             
                 
 
     def clickInfo(self,clickedObj):

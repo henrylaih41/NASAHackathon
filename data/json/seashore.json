@@ -11,5 +11,18 @@
     "plateauButton" : { "type" : "image",
                         "pos" : [800,600],
                         "clickable" : 1
+    },
+    
+     "backpack" : {"type" : "image",
+                  "pos" : [970,50],
+                  "clickable" : 1
+    },
+
+    "fishing-icon" : {"type" : "image",
+                      "pos" : [150,500]
+    },
+
+    "emergency-icon" : {"type" : "image",
+                        "pos"  : [600,400]
     }
 }
